@@ -1,13 +1,31 @@
-import { Fragment } from "react";
-import { GlobalStyles } from "../styles/GlobalStyles";
-import { Sample } from "./Sample";
+import { Suspense } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+
+import { Sample } from './Sample';
+import { Auth } from '../pages/Auth';
+import { LoadingScreen } from './LoadingScreen';
+import { ProtectedRoute } from './ProtectedRoute';
+import { AppContext } from '../Context/AppContext';
+import { GlobalStyles } from '../styles/GlobalStyles';
+import { useInitialState } from '../hooks/useInitialState';
 
 const App = () => {
+  const initialState = useInitialState();
   return (
-    <Fragment>
+    <HelmetProvider context={{}}>
       <GlobalStyles />
-      <Sample />
-    </Fragment>
+      <AppContext.Provider value={initialState}>
+        <BrowserRouter>
+          <Suspense fallback={LoadingScreen}>
+            <Switch>
+              <ProtectedRoute exact path="/" component={Sample} />
+              <Route exact path="/auth" component={Auth} />
+            </Switch>
+          </Suspense>
+        </BrowserRouter>
+      </AppContext.Provider>
+    </HelmetProvider>
   );
 };
 
