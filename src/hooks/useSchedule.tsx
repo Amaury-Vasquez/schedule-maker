@@ -13,9 +13,9 @@ export const useSchedule = () => {
     if(schedule.subjects.length) {
       const {subjects} = schedule;
       let hoursSet: string[] = [];
-      subjects.forEach((sbj) => {
-        hoursSet = hoursSet.concat(sbj.hours);
-      });
+      subjects.forEach((sbj) => 
+        hoursSet = hoursSet.concat(sbj.hours)
+      );
       console.log(hoursSet);
       setHours(() => hoursSet);
     }

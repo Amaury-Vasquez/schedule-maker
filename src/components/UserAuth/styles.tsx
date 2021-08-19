@@ -1,13 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { fadeIn } from "../../styles/animation";
+import { fadeIn } from '../../styles/animation';
 
 export const Auth = styled.div<{ register: boolean }>`
   min-height: ${(props) => (props.register ? '480px' : '300px')};
   height: auto;
   width: 450px;
   background: var(--white);
-  /* border: var(--border); */
   padding: var(--padding);
   border-radius: var(--radius);
   @media screen and (max-width: 500px) {
@@ -24,11 +23,9 @@ export const AuthError = styled.div`
   display: flex;
   justify-content: left;
   align-items: center;
-  /* margin-top: 1vh; */
   padding: var(--items-padding);
   & > span {
     color: #fe5142;
-    /* font-weight: 500; */
     font-size: var(--font-size);
   }
 `;
@@ -47,7 +44,7 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  font-size: var(--font-size);
+  font-size: 1rem;
   background: var(--white);
   width: 100%;
   height: 100%;
@@ -80,7 +77,7 @@ export const Remember = styled.label`
 `;
 
 export const SpanAlert = styled.span`
-  ${fadeIn({time: '0.2s'})};
+  ${fadeIn({ time: '0.2s' })};
   position: relative;
   color: var(--watermelon);
   font-size: 0.9rem;
@@ -96,8 +93,16 @@ export const Wrapper = styled.div`
   align-items: center;
   color: var(--gray-text);
   margin-bottom: var(--gap-y);
-  & > svg:first-child {
+  & > svg {
     position: absolute;
+  }
+  & > svg:first-child {
     left: 8px;
+  }
+  & > svg:last-child {
+    right: 8px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;

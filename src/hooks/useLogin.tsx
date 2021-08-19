@@ -7,6 +7,8 @@ export const useLogin = () => {
   const { setUserData, setLogged } = useContext(AppContext);
   const [badAuth, setBadAuth] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShow] = useState(false);
+
   const logUser = async (data: LoginValues) => {
     setLoading(true);
     const { password, rememberUser, username } = data;
@@ -27,13 +29,15 @@ export const useLogin = () => {
       const userData: UserData = { _id, email, schedule, username };
       setUserData && setUserData(() => userData);
       setLogged && setLogged(true);
-      sessionStorage.setItem('userData', JSON.stringify(userData));
-      sessionStorage.setItem('isLogged', 'true');
+
       if (rememberUser) {
         localStorage.setItem('userData', JSON.stringify(userData));
         localStorage.setItem('isLogged', 'true');
+      } else {
+        sessionStorage.setItem('userData', JSON.stringify(userData));
+        sessionStorage.setItem('isLogged', 'true');
       }
     } else setBadAuth(true);
   };
-  return { badAuth, loading, logUser };
+  return { badAuth, loading, logUser, setShow, showPassword };
 };

@@ -19,16 +19,14 @@ import {
   Wrapper,
 } from './styles';
 
-export const RegisterForm = (props: {
-  cb: Function;
-  focused: number;
-}) => {
+export const RegisterForm = (props: { cb: Function; focused: number }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: joiResolver(registerUserSchema) });
-  const {badRegister, loading, registerFields, registerUser } = useRegister();
+  const { badRegister, loading, registerFields, registerUser, showPassword } =
+    useRegister();
   const { cb, focused } = props;
 
   return (
@@ -62,12 +60,15 @@ export const RegisterForm = (props: {
                     placeholder={field.value}
                     type={
                       field.value.toLowerCase().includes('password')
-                        ? 'password'
+                        ? showPassword
+                          ? 'text'
+                          : 'password'
                         : field.value.includes('email')
                         ? 'email'
                         : 'text'
                     }
                   />
+                  {field.Show && field.Show}
                 </Wrapper>
               </Fragment>
             ))}

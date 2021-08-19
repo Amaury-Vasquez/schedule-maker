@@ -1,7 +1,7 @@
-import { Fragment } from "react"
-import { Helmet } from "react-helmet-async"
+import { Fragment } from 'react';
+import { Helmet } from 'react-helmet-async';
 
-import { Page } from "../../styles/templates"
+import { Schedule } from '../../components/Schedule';
 
 export const Home = () => {
   return (
@@ -9,7 +9,7 @@ export const Home = () => {
       <Helmet>
         <title> Home | Schedule-maker </title>
       </Helmet>
-      <Page></Page>
+      <Schedule />
     </Fragment>
   );
-}
+};

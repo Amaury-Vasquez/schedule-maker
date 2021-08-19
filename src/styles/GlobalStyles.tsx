@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   html {
@@ -15,7 +15,6 @@ export const GlobalStyles = createGlobalStyle`
     --carbon: #A9A9A9;
     --gap-x: 1vw;
     --gap-y: 2vh;
-    --font-size: 16px;
     --border: 1px solid var(--carbon);
     --padding: 25px;
     --items-padding: 15px;

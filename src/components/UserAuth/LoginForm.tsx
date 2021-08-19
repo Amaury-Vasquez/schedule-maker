@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { useForm } from 'react-hook-form';
-import { joiResolver } from '@hookform/resolvers/joi';
-import { AiOutlineUser, AiFillLock } from 'react-icons/ai';
+import { BiShowAlt } from 'react-icons/bi';
+import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
 
 import { Loader } from '../Loader';
 import { TabMenu } from '../TabMenu';
@@ -19,13 +19,13 @@ import {
   Wrapper,
 } from './styles';
 
-export const LoginForm = (props: { cb: Function, focused: number }) => {
+export const LoginForm = (props: { cb: Function; focused: number }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { badAuth, loading, logUser } = useLogin();
+  const { badAuth, loading, logUser, setShow, showPassword } = useLogin();
   const { cb, focused } = props;
 
   return (
@@ -56,16 +56,17 @@ export const LoginForm = (props: { cb: Function, focused: number }) => {
               <SpanAlert> {'* this field is required'} </SpanAlert>
             )}
             <Wrapper>
-              <AiFillLock />
+              <AiOutlineLock />
               <Input
                 {...register('password', { required: true })}
                 placeholder="username"
-                type="password"
+                type={showPassword ? 'text' : 'password'}
               />
+              <BiShowAlt onClick={() => setShow(!showPassword)} />
             </Wrapper>
             {badAuth && (
               <AuthError role="alertdialog">
-                <span> {'User name doesn\'t exist or wrong password'} </span>
+                <span> {"User name doesn't exist or wrong password"} </span>
               </AuthError>
             )}
             <ConfirmSubmit>
