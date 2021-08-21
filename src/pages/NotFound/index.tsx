@@ -17,12 +17,12 @@ export const NotFound = () => {
   return (
     <Fragment>
       <Helmet>
-        <title> {'Page not found | Schedule-maker'} </title>
+        <title> {'Page not found | Schedule-generator'} </title>
       </Helmet>
       <Error404>
         <ErrorMessage>{'404'}</ErrorMessage>
         <ErrorInfo>
-          The page you're looking for doesn't exists or we couln't find it.
+          The page you're looking for doesn't exists or we couldn't find it.
         </ErrorInfo>
         <Link to="/">
           <AiFillHome />

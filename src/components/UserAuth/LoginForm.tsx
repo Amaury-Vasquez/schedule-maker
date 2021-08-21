@@ -28,57 +28,53 @@ export const LoginForm = (props: { cb: Function; focused: number }) => {
   const { badAuth, loading, logUser, setShow, showPassword } = useLogin();
   const { cb, focused } = props;
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <Auth register={false}>
       <TabMenu
         cb={(i: number) => cb(i)}
         focused={focused}
         tabs={['login', 'register']}
       />
-      {loading ? (
-        <LoadScreen>
-          <Loader />
-        </LoadScreen>
-      ) : (
-        <Fragment>
-          <Form onSubmit={handleSubmit(logUser)}>
-            {errors.username && (
-              <SpanAlert> {'* this field is required'} </SpanAlert>
-            )}
-            <Wrapper>
-              <AiOutlineUser />
-              <Input
-                {...register('username', { required: true })}
-                placeholder="username"
-              />
-            </Wrapper>
-            {errors.password && (
-              <SpanAlert> {'* this field is required'} </SpanAlert>
-            )}
-            <Wrapper>
-              <AiOutlineLock />
-              <Input
-                {...register('password', { required: true })}
-                placeholder="username"
-                type={showPassword ? 'text' : 'password'}
-              />
-              <BiShowAlt onClick={() => setShow(!showPassword)} />
-            </Wrapper>
-            {badAuth && (
-              <AuthError role="alertdialog">
-                <span> {"User name doesn't exist or wrong password"} </span>
-              </AuthError>
-            )}
-            <ConfirmSubmit>
-              <Remember>
-                <input {...register('rememberUser')} type="checkbox" />
-                {'remember me'}
-              </Remember>
-              <SubmitButton text="login" />
-            </ConfirmSubmit>
-          </Form>
-        </Fragment>
-      )}
+      <Fragment>
+        <Form onSubmit={handleSubmit(logUser)}>
+          {errors.username && (
+            <SpanAlert> {'* this field is required'} </SpanAlert>
+          )}
+          <Wrapper>
+            <AiOutlineUser />
+            <Input
+              {...register('username', { required: true })}
+              placeholder="username"
+            />
+          </Wrapper>
+          {errors.password && (
+            <SpanAlert> {'* this field is required'} </SpanAlert>
+          )}
+          <Wrapper>
+            <AiOutlineLock />
+            <Input
+              {...register('password', { required: true })}
+              placeholder="username"
+              type={showPassword ? 'text' : 'password'}
+            />
+            <BiShowAlt onClick={() => setShow(!showPassword)} />
+          </Wrapper>
+          {badAuth && (
+            <AuthError role="alertdialog">
+              <span> {"User name doesn't exist or wrong password"} </span>
+            </AuthError>
+          )}
+          <ConfirmSubmit>
+            <Remember>
+              <input {...register('rememberUser')} type="checkbox" />
+              {'remember me'}
+            </Remember>
+            <SubmitButton text="login" />
+          </ConfirmSubmit>
+        </Form>
+      </Fragment>
     </Auth>
   );
 };

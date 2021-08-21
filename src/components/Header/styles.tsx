@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+import { fadeIn, fadeOut } from '../../styles/animation';
 
 export const Close = styled.div`
   height: 10px;
@@ -6,7 +9,7 @@ export const Close = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   & > svg {
     font-size: 1em;
     color: var(--watermelon);
@@ -38,7 +41,7 @@ export const HeaderContainer = styled.header`
   height: 6vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   border-bottom: 1px solid var(--carbon);
 `;
 
@@ -70,6 +73,30 @@ export const Option = styled.button`
   }
 `;
 
+export const Title = styled(Link)`
+  width: auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 30px;
+  & > p {
+    font-size: 1.2rem;
+    color: var(--gray-text);
+    /* font-style: italic; */
+    font-weight: 500;
+  }
+  & > svg {
+    color: var(--watermelon);
+    font-size: 1.4rem;
+    margin-right: 10px;
+  }
+  @media screen and (max-width: 500px) {
+    margin-left: 20px;
+  }
+`;
+
 export const UserIcon = styled.button`
   width: auto;
   height: auto;
@@ -85,7 +112,9 @@ export const UserIcon = styled.button`
   }
 `;
 
-export const UserMenu = styled.div`
+export const UserMenu = styled.div<{ willFade: boolean }>`
+  ${fadeIn({ time: '0.5s' })};
+  ${(props) => props.willFade && fadeOut({ time: '0.3s' })};
   background: var(--white);
   position: absolute;
   top: 6vh;

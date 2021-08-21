@@ -17,7 +17,7 @@ export const Auth = () => {
   return (
     <Fragment>
       <Helmet>
-        <title> User Auth | Schedule-maker </title>
+        <title> User Auth | Schedule-generator </title>
       </Helmet>
       <UserAuth />
     </Fragment>

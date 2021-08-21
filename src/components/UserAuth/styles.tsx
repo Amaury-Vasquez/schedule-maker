@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { fadeIn } from '../../styles/animation';
 
 export const Auth = styled.div<{ register: boolean }>`
+  ${fadeIn({ time: '1s' })};
   min-height: ${(props) => (props.register ? '480px' : '300px')};
   height: auto;
   width: 450px;

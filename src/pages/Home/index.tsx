@@ -7,7 +7,7 @@ export const Home = () => {
   return (
     <Fragment>
       <Helmet>
-        <title> Home | Schedule-maker </title>
+        <title> Home | Schedule-generator </title>
       </Helmet>
       <Schedule />
     </Fragment>

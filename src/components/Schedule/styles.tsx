@@ -1,5 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Table = styled.div`
-  
-`;
+export const CreateSchedule = styled.div``;
+export const Table = styled.div``;
