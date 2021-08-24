@@ -21,21 +21,3 @@ export const ErrorInfo = styled.p`
   font-size: 1.2rem;
   color: var(--gray-text);
 `;
-
-export const Link = styled(ReactLink)`
-  border-radius: var(--radius);
-  margin: 0 auto;
-  margin-top: 3vh;
-  height: var(--line-height);
-  width: 100px;
-  font-size: 1rem;
-  background: var(--watermelon);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--white);
-  font-weight: 500;
-  & > svg {
-    font-size: 1.5em;
-  }
-`;

@@ -4,7 +4,7 @@ import { Fragment, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 
-import { Error404, ErrorInfo, ErrorMessage, Link } from './styles';
+import { Error404, ErrorInfo, ErrorMessage } from './styles';
 import { AppContext } from '../../Context/AppContext';
 
 export const NotFound = () => {
@@ -24,9 +24,6 @@ export const NotFound = () => {
         <ErrorInfo>
           The page you're looking for doesn't exists or we couldn't find it.
         </ErrorInfo>
-        <Link to="/">
-          <AiFillHome />
-        </Link>
       </Error404>
     </Fragment>
   );
