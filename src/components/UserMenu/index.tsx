@@ -1,29 +1,46 @@
 import { AiOutlineClose } from 'react-icons/ai';
+import { useClickOutside } from '../../hooks/useClickOutside';
 
 import { useUserMenu } from '../../hooks/useUserMenu';
 import { Close, Option, Menu } from './styles';
 
 export const UserMenu = (props: { cb: Function; willFade: boolean }) => {
   const { cb, willFade } = props;
-  const { options, ref } = useUserMenu(cb);
+  const ref = useClickOutside(cb);
+  const { isLogged, login, options } = useUserMenu();
   return (
-    <Menu ref={ref} willFade={willFade}>
-      <Close aria-disabled={willFade}>
+    <Menu aria-disabled={willFade} ref={ref} willFade={willFade}>
+      <Close>
         <AiOutlineClose onClick={() => cb()} />
       </Close>
-      {options.map((option, i) => (
+      {isLogged ? (
+        options.map((option, i) => (
+          <Option
+            key={option.text + i}
+            name={option.text}
+            onClick={() => {
+              option.cb();
+              cb();
+            }}
+          >
+            <span>
+              {option.text} {<option.Icon />}
+            </span>
+          </Option>
+        ))
+      ) : (
         <Option
-          key={option.text + i}
+          name={login.text}
           onClick={() => {
-            option.cb();
+            login.cb();
             cb();
           }}
         >
           <span>
-            {option.text} {<option.Icon />}
+            {login.text} {<login.Icon />}
           </span>
         </Option>
-      ))}
+      )}
     </Menu>
   );
 };

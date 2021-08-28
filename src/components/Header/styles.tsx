@@ -29,7 +29,26 @@ export const Title = styled(Link)`
     font-size: 1.4rem;
     margin-right: 10px;
   }
+  &:hover {
+    opacity: 0.8;
+  }
   @media screen and (max-width: 500px) {
     margin-left: 20px;
+  }
+`;
+
+export const UserButton = styled.button`
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  & > svg {
+    font-size: 24px;
+    color: var(--watermelon);
   }
 `;

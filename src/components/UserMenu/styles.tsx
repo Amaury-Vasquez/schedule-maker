@@ -60,6 +60,7 @@ export const Menu = styled.div<{ willFade: boolean }>`
   box-shadow: var(--shadow);
   border-top: none;
   padding: var(--items-padding);
+  z-index: 1;
   & > div,
   > button {
     border-bottom: 1px solid #d8d6d6;

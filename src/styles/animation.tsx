@@ -1,5 +1,14 @@
 import { keyframes, css } from 'styled-components';
 
+const backgroundKeyframes = keyframes`
+  from {
+    background: none;
+  }
+  to {
+    background: var(--white);
+  }
+`;
+
 const fadeInKeyframes = keyframes`
   from {
     filter: blur(5px);
@@ -22,6 +31,10 @@ const fadeOutKeyframes = keyframes`
     filter: blur(5px);
     opacity: 0;
   }
+`;
+
+export const background = () => css`
+  animation: 0.3s ${backgroundKeyframes} ease-in;
 `;
 
 export const fadeIn = ({ time = '2s', type = 'ease' } = {}) =>

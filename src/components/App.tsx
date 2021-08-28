@@ -20,9 +20,9 @@ const App = () => {
       <AppContext.Provider value={initialState}>
         <BrowserRouter>
           <Suspense fallback={LoadingScreen}>
-            <Layout isLogged={initialState.isLogged}>
+            <Layout>
               <Switch>
-                <ProtectedRoute exact path="/" component={Home} />
+                <Route exact path="/" component={Home} />
                 <Route exact path="/auth" component={Auth} />
                 <Route path="*" component={NotFound} />
               </Switch>

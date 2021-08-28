@@ -20,7 +20,7 @@ export interface RegisterValues {
 }
 
 export interface Schedule {
-  subjects: Subject [];
+  subjects: Subject[];
   days: string[];
 }
 export interface Subject {
