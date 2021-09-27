@@ -14,6 +14,7 @@ export const useSchedule = () => {
   const [schedule, setSchedule] = useState<Schedule>(
     userData?.schedule || { subjects: [], days: [] }
   );
+
   const [hours, setHours] = useState<string[]>([]);
   const defaultHours = [
     '8:00 - 9:00',
@@ -25,12 +26,17 @@ export const useSchedule = () => {
   ];
   const [days, setDays] = useState<string[]>([]);
   const defaultDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
   const options = [
     { cb: () => {}, Icon: AiOutlineFileAdd, text: 'Add subject' },
     { cb: () => {}, Icon: AiOutlineDelete, text: 'Delete subject' },
     { cb: () => {}, Icon: RiRestartLine, text: 'Reset schedule' },
     { cb: () => {}, Icon: AiOutlineSave, text: 'Save' },
   ];
+
+  const getColumns = () => (days.length ? days.length : defaultDays.length);
+  const getRows = () => (hours.length ? hours.length : defaultHours.length);
+
   useEffect(() => {
     if (schedule.subjects.length) {
       const { subjects } = schedule;
@@ -40,5 +46,15 @@ export const useSchedule = () => {
       setHours(() => hoursSet);
     } else setHours(() => []);
   }, [schedule, setHours]);
-  return { days, defaultDays, defaultHours, hours, options, schedule };
+
+  return {
+    days,
+    defaultDays,
+    defaultHours,
+    getColumns,
+    getRows,
+    hours,
+    options,
+    schedule,
+  };
 };

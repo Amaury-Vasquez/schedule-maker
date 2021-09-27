@@ -7,12 +7,14 @@ import { UserButton, HeaderContainer, Title } from './styles';
 
 export const Header = () => {
   return (
-    <HeaderContainer>
-      <Title to="/">
-        <AiOutlineSchedule />
-        <p> Schedule generator</p>
-      </Title>
-      <Dropdown Button={UserButton} Cover={FaUserCircle} Content={UserMenu} />
-    </HeaderContainer>
+    <section>
+      <HeaderContainer>
+        <Title to="/">
+          <AiOutlineSchedule />
+          <p> Schedule generator</p>
+        </Title>
+        <Dropdown Button={UserButton} Cover={FaUserCircle} Content={UserMenu} />
+      </HeaderContainer>
+    </section>
   );
 };
